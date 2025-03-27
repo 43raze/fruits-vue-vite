@@ -1,4 +1,4 @@
-# vue-vite-app
+# fruit-vite-app
 
 This template should help get you started developing with Vue 3 in Vite.
 
