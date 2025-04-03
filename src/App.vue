@@ -1,28 +1,25 @@
 <script>
-import ItemFruit from './ItemFruit.vue'
+import FruitItem from './components/FruitItem.vue'
+import FruitSubmitter from './components/FruitSubmitter.vue'
 
 export default {
-  components: { ItemFruit },
+  components: { FruitItem, FruitSubmitter },
 
   data() {
     return {
       fruits: ['Яблоко', 'Банан', 'Апельсин', 'Груша', 'Виноград'],
-      fruit: 'Вишня',
       lastFruit: '',
     }
   },
 
   methods: {
-    addFruit() {
-      this.fruit = this.fruit.trim()
-      if (!this.fruit || this.fruits.includes(this.fruit)) return
+    doSomething() {
+      if (this.fruits.includes(this.fruit)) return
       this.fruits.push(this.fruit)
       this.lastFruit = this.fruit
-      this.fruit = ''
     },
 
     removeFruit(fruit) {
-      console.log(fruit)
       this.fruits = this.fruits.filter(f => f !== fruit)
     },
   },
@@ -35,16 +32,16 @@ export default {
     <h2 v-if="lastFruit">Последний добавленный фрукт: {{ lastFruit }}</h2>
     <h2 v-else>Фруктов еще не добавлялось</h2>
 
-    <input v-model="fruit" />
-    <button @click="addFruit">Добавить фрукт</button>
+    <FruitSubmitter @fruit-submit="fruits.push($event)" />
+
     <button @click="fruits.pop()">Удалить последний фрукт</button>
 
     <ul>
-      <ItemFruit
+      <FruitItem
         v-for="(fruit, idx) of fruits"
         :key="idx"
         :fruit="fruit"
-        @fruit-removed="() => removeFruit(fruit)"
+        @fruit-removed="removeFruit"
       />
     </ul>
   </main>
