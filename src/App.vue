@@ -44,7 +44,7 @@ export default {
         v-for="(fruit, idx) of fruits"
         :key="idx"
         :fruit="fruit"
-        @fruit-removed="() => removeFruit($event)"
+        @fruit-removed="() => removeFruit(fruit)"
       />
     </ul>
   </main>
