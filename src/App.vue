@@ -37,7 +37,9 @@ export default {
 
     <FruitSubmitter @fruit-submit="addFruit" />
 
-    <button @click="fruits.pop()">Удалить последний фрукт</button>
+    <button class="delete__last" @click="fruits.pop()">
+      Удалить последний фрукт
+    </button>
 
     <FruitsList :fruits="fruits" @fruit-removed="removeFruit" />
   </main>

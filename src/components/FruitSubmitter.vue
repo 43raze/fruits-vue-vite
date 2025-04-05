@@ -14,6 +14,8 @@ export default {
       if (!this.fruit) return
       this.$emit('fruit-submit', this.fruit)
       this.fruit = ''
+
+      this.$refs.fruitInput.focus()
     },
   },
 }
@@ -21,7 +23,7 @@ export default {
 
 <template>
   <div>
-    <input v-model="fruit" />
+    <input v-model="fruit" ref="fruitInput" />
     <button @click="addFruit">Добавить фрукт</button>
   </div>
 </template>

@@ -7,5 +7,10 @@ export default {
 </script>
 
 <template>
-  <li>{{ fruit }} <button @click="$emit('fruit-removed', fruit)">x</button></li>
+  <li>
+    {{ fruit }}
+    <button class="delete__item" @click="$emit('fruit-removed', fruit)">
+      x
+    </button>
+  </li>
 </template>
