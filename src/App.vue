@@ -4,7 +4,11 @@ import FruitLasted from './components/FruitLasted.vue'
 import FruitSubmitter from './components/FruitSubmitter.vue'
 
 export default {
-  components: { FruitSubmitter, FruitLasted, FruitsList },
+  components: {
+    FruitSubmitter,
+    FruitLasted,
+    FruitsList,
+  },
 
   data() {
     return {
@@ -13,9 +17,9 @@ export default {
   },
 
   methods: {
-    doSomething() {
-      if (this.fruits.includes(this.fruit)) return
-      this.fruits.push(this.fruit)
+    addFruit(fruit) {
+      if (this.fruits.includes(fruit)) return
+      this.fruits.push(fruit)
     },
 
     removeFruit(fruit) {
@@ -31,7 +35,7 @@ export default {
 
     <FruitLasted :last-fruit="fruits.at(-1)" />
 
-    <FruitSubmitter @fruit-submit="fruits.push($event)" />
+    <FruitSubmitter @fruit-submit="addFruit" />
 
     <button @click="fruits.pop()">Удалить последний фрукт</button>
 
