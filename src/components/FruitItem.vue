@@ -8,7 +8,7 @@ export default {
 
 <template>
   <li>
-    {{ fruit }}
+    <input :value="fruit" />
     <button class="delete__item" @click="$emit('fruit-removed', fruit)">
       x
     </button>
