@@ -25,10 +25,6 @@ export default {
     removeFruit(fruit) {
       this.fruits = this.fruits.filter(f => f !== fruit)
     },
-
-    updateFruit(newFruit, oldFruit) {
-      this.fruits = this.fruits.map(f => (f === oldFruit ? newFruit : f))
-    },
   },
 }
 </script>
@@ -47,8 +43,8 @@ export default {
 
     <FruitsList
       :fruits="fruits"
+      @fruits-updated="fruits = $event"
       @fruit-removed="removeFruit"
-      @fruit-changed="updateFruit($event)"
     />
   </main>
 </template>
