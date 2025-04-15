@@ -6,7 +6,7 @@ export default {
 
   props: ['fruits'],
 
-  emits: ['fruit-removed'],
+  emits: ['fruit-removed', 'fruit-changed'],
 }
 </script>
 
@@ -16,7 +16,8 @@ export default {
       v-for="(fruit, idx) of fruits"
       :key="idx"
       :fruit="fruit"
-      @fruit-removed="$emit('fruit-removed', fruit)"
+      @fruit-removed="$emit('fruit-removed', $event)"
+      @fruit-changed="$emit('fruit-changed', $event)"
     />
   </ul>
 </template>
