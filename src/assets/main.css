@@ -52,3 +52,18 @@ li {
 li:last-of-type {
   margin: 0;
 }
+
+input,
+button,
+textarea,
+select,
+option,
+html {
+  font-family: sans-serif;
+  font-size: 22px;
+  color: #234;
+  font-weight: bold;
+}
+body {
+  padding: 25px;
+}
