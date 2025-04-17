@@ -6,11 +6,21 @@ export default {
 
   props: ['fruits'],
 
-  emits: ['fruit-removed', 'fruit-changed'],
+  emits: ['fruit-removed', 'fruit-changed', 'fruits-updated'],
 
   methods: {
     updateFruits(newFruit, oldFruit) {
-      return this.fruits.map(f => (f === oldFruit ? newFruit : f))
+      this.$emit(
+        'fruits-updated',
+        this.fruits.map(f => (f === oldFruit ? newFruit : f))
+      )
+    },
+
+    removeFruit(fruit) {
+      this.$emit(
+        'fruits-updated',
+        this.fruits.filter(f => f !== fruit)
+      )
     },
   },
 }
@@ -22,8 +32,8 @@ export default {
       v-for="(fruit, idx) of fruits"
       :key="idx"
       :fruit="fruit"
-      @fruit-changed="$emit('fruits-updated', updateFruits($event, fruit))"
-      @fruit-removed="$emit('fruit-removed', $event)"
+      @fruit-changed="updateFruits($event, fruit)"
+      @fruit-removed="removeFruit($event)"
     />
   </ul>
 </template>

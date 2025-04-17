@@ -21,10 +21,6 @@ export default {
       if (this.fruits.includes(fruit)) return
       this.fruits.push(fruit)
     },
-
-    removeFruit(fruit) {
-      this.fruits = this.fruits.filter(f => f !== fruit)
-    },
   },
 }
 </script>
@@ -37,14 +33,8 @@ export default {
 
     <FruitSubmitter @fruit-submit="addFruit" :fruits="fruits" />
 
-    <button class="delete__last" @click="fruits.pop()">
-      Удалить последний фрукт
-    </button>
+    <button class="delete__last" @click="fruits.pop()">Удалить фрукт</button>
 
-    <FruitsList
-      :fruits="fruits"
-      @fruits-updated="fruits = $event"
-      @fruit-removed="removeFruit"
-    />
+    <FruitsList :fruits="fruits" @fruits-updated="fruits = $event" />
   </main>
 </template>
