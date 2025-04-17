@@ -12,13 +12,20 @@ export default {
 
   data() {
     return {
-      fruits: ['Яблоко', 'Банан', 'Апельсин', 'Груша'],
+      fruits: [
+        { id: 1, caption: 'Яблоко' },
+        { id: 2, caption: 'Банан' },
+        { id: 3, caption: 'Апельсин' },
+        { id: 4, caption: 'Груша' },
+      ],
     }
   },
 
+  // 'super + space', 'alt + shift'
+
   methods: {
     addFruit(fruit) {
-      if (this.fruits.includes(fruit)) return
+      if (this.fruits.some(f => f.caption === fruit.caption)) return
       this.fruits.push(fruit)
     },
   },
@@ -29,7 +36,7 @@ export default {
   <main>
     <h1>Фрукты</h1>
 
-    <FruitLasted :last-fruit="fruits.at(-1)" />
+    <FruitLasted :last-fruit="fruits.at(-1).caption" />
 
     <FruitSubmitter @fruit-submit="addFruit" />
 
