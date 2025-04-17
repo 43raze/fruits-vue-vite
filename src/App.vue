@@ -31,10 +31,14 @@ export default {
 
     <FruitLasted :last-fruit="fruits.at(-1)" />
 
-    <FruitSubmitter @fruit-submit="addFruit" :fruits="fruits" />
+    <FruitSubmitter @fruit-submit="addFruit" />
 
     <button class="delete__last" @click="fruits.pop()">Удалить фрукт</button>
 
-    <FruitsList :fruits="fruits" @fruits-updated="fruits = $event" />
+    <!-- <FruitsList :fruits="fruits" @fruits-updated="fruits = $event" /> -->
+
+    <!-- <FruitsList :model-value="fruits" @update:model-value="fruits = $event" /> -->
+
+    <FruitsList v-model="fruits" />
   </main>
 </template>
