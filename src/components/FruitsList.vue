@@ -24,7 +24,7 @@ export default {
   <ul>
     <FruitItem
       v-for="fruit of modelValue"
-      :key="fruit"
+      :key="fruit.id"
       :fruit="fruit"
       @fruit-changed="$emit('update:model-value', swapFruit($event, fruit))"
       @fruit-removed="$emit('update:model-value', removeFruit($event))"

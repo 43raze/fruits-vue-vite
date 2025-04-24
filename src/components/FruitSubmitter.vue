@@ -1,11 +1,13 @@
 <script>
+// let i = 0
+// const nextId = () => ++i
+
 export default {
   emits: ['fruit-submit'],
 
   data() {
     return {
-      id: 0,
-      fruit: { id: ++id, caption: '' },
+      fruit: { id: 5, caption: '' },
     }
   },
 
@@ -15,7 +17,7 @@ export default {
       if (!this.fruit.caption) return
       this.$emit('fruit-submit', this.fruit)
       this.fruit.caption = ''
-
+      this.fruit.id = this.fruit.id + 1
       this.$refs.fruitInput.focus()
     },
   },

@@ -20,25 +20,17 @@ export default {
       ],
     }
   },
-
-  // 'super + space', 'alt + shift'
-
-  methods: {
-    addFruit(fruit) {
-      if (this.fruits.some(f => f.caption === fruit.caption)) return
-      this.fruits.push(fruit)
-    },
-  },
 }
 </script>
 
 <template>
   <main>
+    {{ fruits }}
     <h1>Фрукты</h1>
 
     <FruitLasted :last-fruit="fruits.at(-1).caption" />
 
-    <FruitSubmitter @fruit-submit="addFruit" />
+    <FruitSubmitter @fruit-submit="fruits.push($event)" />
 
     <button class="delete__last" @click="fruits.pop()">Удалить фрукт</button>
 
