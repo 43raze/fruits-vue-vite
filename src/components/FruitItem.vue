@@ -9,7 +9,7 @@ export default {
 <template>
   <li>
     <input
-      :value="fruit"
+      :value="fruit.caption"
       @input="$emit('fruit-changed', $event.target.value)"
     />
 

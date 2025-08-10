@@ -4,17 +4,20 @@ export default {
 
   data() {
     return {
-      fruit: 'Вишня',
+      fruit: { id: 5, caption: '' },
     }
   },
 
   methods: {
     addFruit() {
-      this.fruit = this.fruit.trim()
-      if (!this.fruit) return
-      this.$emit('fruit-submit', this.fruit)
-      this.fruit = ''
-
+      this.fruit.caption = this.fruit.caption.trim()
+      if (!this.fruit.caption) return
+      this.$emit('fruit-submit', {
+        id: this.fruit.id,
+        caption: this.fruit.caption,
+      })
+      this.fruit.caption = ''
+      this.fruit.id = this.fruit.id + 1
       this.$refs.fruitInput.focus()
     },
   },
@@ -23,7 +26,7 @@ export default {
 
 <template>
   <div>
-    <input v-model="fruit" ref="fruitInput" />
+    <input v-model="fruit.caption" ref="fruitInput" />
     <button @click="addFruit">Добавить фрукт</button>
   </div>
 </template>

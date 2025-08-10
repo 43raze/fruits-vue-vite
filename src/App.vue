@@ -12,26 +12,25 @@ export default {
 
   data() {
     return {
-      fruits: ['Яблоко', 'Банан', 'Апельсин', 'Груша'],
+      fruits: [
+        { id: 1, caption: 'Яблоко' },
+        { id: 2, caption: 'Банан' },
+        { id: 3, caption: 'Апельсин' },
+        { id: 4, caption: 'Груша' },
+      ],
     }
-  },
-
-  methods: {
-    addFruit(fruit) {
-      if (this.fruits.includes(fruit)) return
-      this.fruits.push(fruit)
-    },
   },
 }
 </script>
 
 <template>
   <main>
+    {{ fruits }}
     <h1>Фрукты</h1>
 
-    <FruitLasted :last-fruit="fruits.at(-1)" />
+    <FruitLasted :last-fruit="fruits.at(-1).caption" />
 
-    <FruitSubmitter @fruit-submit="addFruit" />
+    <FruitSubmitter @fruit-submit="fruits.push($event)" />
 
     <button class="delete__last" @click="fruits.pop()">Удалить фрукт</button>
 
